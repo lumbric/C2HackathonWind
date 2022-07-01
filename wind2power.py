@@ -22,4 +22,4 @@ def wind2power_numpy(wind, type = 'high-wind'):
 
 def wind2power(wind, type = 'high-wind'):
     # note: dask objects won't work here, use .load() for wind!
-    return xr.apply_ufunc(wind2power_numpy)
+    return xr.apply_ufunc(wind2power_numpy, wind)
