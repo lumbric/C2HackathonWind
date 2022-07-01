@@ -1,6 +1,7 @@
 import numpy as np
+import xarray as xr
 
-def wind2power(wind, type = 'high-wind'):
+def wind2power_numpy(wind, type = 'high-wind'):
     
     ## wind in m/s
     ## type must be 'high-wind' or 'low-wind'
@@ -17,3 +18,7 @@ def wind2power(wind, type = 'high-wind'):
     power = np.interp(x = wind, xp = xp, fp = fp, left = 0, right = 0)
     
     return power
+
+
+def wind2power(wind, type = 'high-wind'):
+    return xr.apply_ufunc(wind2power_numpy, wind_speed)
